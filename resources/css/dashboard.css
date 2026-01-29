@@ -1,0 +1,47 @@
+/* Dashboard Dark Theme Improvements */
+
+body {
+    background-color: #05070f;
+}
+
+/* Glassy dark cards */
+.dashboard-card {
+    background: linear-gradient(180deg, #0f172a, #0b1220);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+}
+
+/* Section titles */
+.section-title {
+    color: #38bdf8;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Muted text */
+.text-muted {
+    color: #94a3b8;
+}
+
+/* QUIZ PANEL */
+.quiz-panel {
+    background: radial-gradient(circle at top, #7f1d1d, #450a0a);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 20px 60px rgba(239, 68, 68, 0.35);
+    border-radius: 22px;
+}
+
+/* CTA Button */
+.quiz-btn {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.6);
+    transition: all 0.3s ease;
+}
+
+.quiz-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(239, 68, 68, 0.8);
+}

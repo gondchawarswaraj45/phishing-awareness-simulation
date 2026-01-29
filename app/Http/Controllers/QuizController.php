@@ -10,24 +10,22 @@ class QuizController extends Controller
     public function index()
     {
         $questions = Quiz::all();
-        return view('quiz', compact('questions'));
+        return view('quiz.index', compact('questions'));
     }
 
-    public function submit(Request $request)
-    {
-        $questions = Quiz::all();
-        $score = 0;
+   public function submit(Request $request)
+{
+    $score = 0;
+    $total = Quiz::count();
 
-        foreach ($questions as $question) {
-            $answer = $request->input('question_'.$question->id);
-            if ($answer === $question->correct_option) {
-                $score++;
-            }
+    foreach ($request->answers ?? [] as $questionId => $answer) {
+        $question = Quiz::find($questionId);
+        if ($question && $question->correct_option === $answer) {
+            $score++;
         }
-
-        return view('result', [
-            'score' => $score,
-            'total' => $questions->count()
-        ]);
     }
+
+    return view('quiz.result', compact('score', 'total'));
+}
+
 }

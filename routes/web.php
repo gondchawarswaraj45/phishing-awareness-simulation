@@ -5,18 +5,16 @@ use App\Http\Controllers\QuizController;
 
 /*
 |--------------------------------------------------------------------------
-| Public
+| Web Routes
 |--------------------------------------------------------------------------
 */
+
+// Public route
 Route::get('/', function () {
     return view('welcome');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Authenticated Routes
-|--------------------------------------------------------------------------
-*/
+// Authenticated routes
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', function () {
@@ -27,4 +25,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quiz/submit', [QuizController::class, 'submit'])->name('quiz.submit');
 });
 
-require __DIR__.'/auth.php';
+// Breeze authentication routes
+require __DIR__ . '/auth.php';
