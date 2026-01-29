@@ -1,70 +1,53 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="section-title text-2xl">
-            Dashboard
-        </h2>
-    </x-slot>
+    <div class="min-h-screen w-full px-6 py-16"
+         style="
+            background-image: url('{{ asset('images/dashboard-bg.webp') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+         ">
 
-    <div class="dashboard-bg min-h-screen py-12 px-6 relative">
+        <div class="absolute inset-0 bg-black/60"></div>
 
+        <div class="relative z-10 max-w-6xl mx-auto space-y-12 text-white">
 
-        <div class="max-w-6xl mx-auto space-y-14">
+            <h1 class="text-4xl font-extrabold text-cyan-400 text-center">
+                🛡️ Phishing Awareness Dashboard
+            </h1>
 
-            <!-- Heading -->
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold text-cyan-400 mb-4">
-                    🛡️ Phishing Awareness Simulation System
-                </h1>
-                <p class="text-muted max-w-2xl mx-auto">
-                    A cybersecurity training platform to evaluate and improve
-                    phishing attack awareness using real-world simulations.
-                </p>
-            </div>
+            <!-- STATS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-            <!-- DASHBOARD GRID -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-                <div class="dashboard-card p-8">
-                    <p class="text-muted mb-2">User</p>
-                    <p class="text-xl font-bold text-white">
-                        {{ auth()->user()->name }}
+                <div class="bg-black/80 p-8 rounded-2xl text-center">
+                    <p class="text-gray-400">Total Attempts</p>
+                    <p class="text-4xl font-bold text-white">
+                        {{ $totalAttempts }}
                     </p>
                 </div>
 
-                <div class="dashboard-card p-8">
-                    <p class="text-muted mb-2">Current Level</p>
-                    <p class="text-xl font-bold text-yellow-400">
-                        Beginner
+                <div class="bg-black/80 p-8 rounded-2xl text-center">
+                    <p class="text-gray-400">Last Score</p>
+                    <p class="text-4xl font-bold text-yellow-400">
+                        {{ $lastResult?->percentage ?? 0 }}%
                     </p>
                 </div>
 
-                <div class="dashboard-card p-8">
-                    <p class="text-muted mb-2">Awareness Status</p>
-                    <p class="text-xl font-bold text-green-400">
-                        Active
+                <div class="bg-black/80 p-8 rounded-2xl text-center">
+                    <p class="text-gray-400">Highest Score</p>
+                    <p class="text-4xl font-bold text-green-400">
+                        {{ $highestScore ?? 0 }}%
                     </p>
                 </div>
 
             </div>
 
-            <!-- QUIZ SECTION (CLEARLY SEPARATED) -->
-            <div class="quiz-panel p-12 text-center">
-
-                <h2 class="text-3xl font-extrabold text-white mb-4">
-                    🚨 Phishing Detection Quiz
-                </h2>
-
-                <p class="text-red-200 mb-10 max-w-xl mx-auto">
-                    Attempt the quiz to test your ability to identify
-                    phishing emails, malicious links, and social engineering attacks.
-                </p>
-
+            <!-- ACTION -->
+            <div class="text-center pt-10">
                 <a href="{{ route('quiz') }}"
-                   class="quiz-btn inline-block px-12 py-4 rounded-full
-                          text-lg font-extrabold text-white">
-                    Start Quiz
+                   class="px-14 py-4 rounded-full bg-red-600 hover:bg-red-700
+                          text-white text-lg font-bold transition">
+                    🚀 Start New Quiz
                 </a>
-
             </div>
 
         </div>
